@@ -1,0 +1,135 @@
+@font-face {
+    font-family: 'spooky';
+    src: url(./fonts/spooky.ttf);
+}
+
+/* ------ Full Container Section ------ */
+body{
+    margin: 0;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: 'spooky', 'times new roman', sans-serif;
+}
+
+/* ------ Title Section ------ */
+.title{
+    display: flex;
+    flex-direction: column;
+    border-bottom: 5px solid black;
+    text-align: center;
+    background-image: url(./img/blood.jpg);
+    background-size: 300px 300px;
+}
+
+.title h1{
+    font-size: 60px;
+    margin: 40px 0 0 0;
+}
+
+.title p{
+    text-align: center;
+    font-size: 32px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    color: darkred;
+}
+
+/* ------ Game Section ------ */
+.game{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-top: 50px;
+    background-color: lightgray;
+    min-height: 100vh;
+}
+
+/* ------ Profiles Sub-Section ------ */
+.profiles{
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.profiles img{
+    width: 200px;
+    height: auto;
+    padding: 0;
+    border: black 4px solid;
+}
+
+.lives-section{
+    display: flex;
+    flex-direction: column;
+    font-size: 32px;
+    font-weight: bold;
+    justify-content: end;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.lives{
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.lives div{
+    height: 30px;
+    width: 30px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.player-lives, .computer-lives{
+    border: 4px dashed black;
+}
+
+/* ------ Choices Sub-Section ------ */
+
+.choices{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.choices img{
+    width: 180px;
+    height: auto;
+}
+
+.choices p{
+    font-size: 50px;
+    font-weight: bolder;
+    color: red;
+}
+
+/* ------ Reound Result Text Sub-Section ------ */
+.round-result-text{
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+}
+
+/* ------ Buttons Sub-Section ------ */
+.btns{
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.btn{
+    height: 100px;
+    width: 100px;
+    border: 3px solid black;
+}
+
+.btn:hover{
+    background-color: rgba(200, 207, 83, 0.67);
+}

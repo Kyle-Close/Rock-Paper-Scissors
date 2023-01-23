@@ -5,14 +5,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="script.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
     <title>Rock Paper Scissors</title>
 </head>
 <body>
-    <div class="result"></div>
-    <div class="btns">
-        <button class="btn" id="rock">Rock</button>
-        <button class="btn" id="paper">Paper</button>
-        <button class="btn" id="scissors">Scissors</button>
+    <div class="container">
+        <div class="title">
+            <h1>Rock Paper Scissors</h1>
+            <p>To the death...</p>
+        </div>
+        <div class="game">
+            <div class="profiles">
+                <img src="./img/playerIcon.png" alt="players' profile picture">
+                <div class="lives-section">
+                    <p>Lives Remaining</p>
+                    <div class="lives">
+                        <div class="player-lives">
+                            5
+                        </div>
+                        <div class="computer-lives">
+                            5
+                        </div>
+                    </div>
+                </div>
+                <img src="./img/compuerIcon.png" alt="computers' profile picture (cartoony icon of grim reaper)">
+            </div>
+            <div class="choices">
+                <img class="player" id="choice-imgs" src="./img/rock.png" alt="player choice">
+                <p>Vs</p>
+                <img class="computer" id="choice-imgs" src="./img/rock.png" alt="computer choice">
+            </div>
+            <div class="round-result-text">
+                Grim Reapers' rock, beats your scissors
+            </div>
+            <div class="btns">
+                <img class='btn' id='rock' src="./img/rock.png" alt="player choice">
+                <img class='btn' id='paper' src="./img/paper.png" alt="player choice">
+                <img class='btn' id='scissors' src="./img/scissors.png" alt="player choice">
+            </div>
+        </div>
+
     </div>
+
 </body>
 </html>

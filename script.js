@@ -1,17 +1,46 @@
-let playerScore = 0;
-let computerScore = 0;
+let playerLives = 5;
+let computerLives = 5;
 
 const buttons = document.querySelectorAll(".btn");
-const resultContainer = document.querySelector(".result");
+const resultContainer = document.querySelector(".round-result-text");
+const playerChoiceImage = document.querySelector(".player");
+const computerChoiceImage = document.querySelector(".computer");
+const playerLivesDiv = document.querySelector(".player-lives");
+const computerLivesDiv = document.querySelector(".computer-lives");
 
 buttons.forEach((button) => {
   button.addEventListener("click", function (event) {
-    result = play(getPlayerChoice(event), getComputerChoice());
+    computerChoice = getComputerChoice();
+    result = play(getPlayerChoice(event), computerChoice);
+    updateChoiceImages(event.target.id, 'player');
+    updateChoiceImages(computerChoice.toLowerCase(), 'computer');
+    resultContainer.textContent = result;
     checkForWinner(result);
   });
 });
 
+function updateChoiceImages(id, player) {
+  let img;
+  if (id == "rock") {
+    img = "./img/rock.png";
+  } else if (id == "paper") {
+    img = "./img/paper.png";
+  } else {
+    img = "./img/scissors.png";
+  }
 
+  if(player == "player"){
+    playerChoiceImage.src = img;
+  }
+  else{
+    computerChoiceImage.src = img;
+  }
+}
+
+function updateLivesCount(){
+  playerLivesDiv.textContent = playerLives.toString();
+  computerLivesDiv.textContent = computerLives.toString();
+}
 
 function getComputerChoice() {
   let choice = Math.floor(Math.random() * 3); // Generate random number between 0 - 2
@@ -30,9 +59,9 @@ function getPlayerChoice(event) {
 }
 
 function play(playerSelection, computerSelection) {
-  let loseString = `You lose. Computers ${computerSelection} beats your ${playerSelection}`;
-  let winString = `You win! Your ${playerSelection} beats the computers ${computerSelection}`;
-  let drawString = `Draw. You both chose ${playerSelection}`;
+  let loseString = `Grim Reapers' ${computerSelection} beats your ${playerSelection}`;
+  let winString = `Your ${playerSelection} beats the Grim Reapers ${computerSelection}`;
+  let drawString = `Draw. Everyone lives another turn...`;
 
   if (playerSelection == computerSelection) {
     return drawString;
@@ -57,23 +86,25 @@ function play(playerSelection, computerSelection) {
   }
 }
 
-function resetScores(){
-	playerScore = 0;
-	computerScore = 0;
+function resetScores() {
+  playerLives = 5;
+  computerLives = 5;
 }
 
 function checkForWinner(result) {
-  if (result.startsWith("You win")) {
-    playerScore++;
-  } else if (result.startsWith("You lose")) {
-    computerScore++;
+  if (result.startsWith("Your")) {
+    computerLives--;
+  } else if (result.startsWith("Grim")) {
+    playerLives--;
   }
 
-  if (playerScore == 5) {
-		resultContainer.textContent = 'You win!';
-		resetScores();
-  } else if (computerScore == 5) {
-		resultContainer.textContent = 'Computers wins. Better luck next time!';
-		resetScores();
+  if (computerLives == 0) {
+    resultContainer.textContent =
+      "You've defeated the Grim Reaper and live to see another day";
+    resetScores();
+  } else if (playerLives == 0) {
+    resultContainer.textContent = "You've been defeated by the Grim Reaper";
+    resetScores();
   }
+  updateLivesCount();
 }
